@@ -1,17 +1,17 @@
 # UPMSP
 
-## Traveling Umpire Problem Solver
+## Solver for the unrelated parallel machine scheduling problem with sequence dependent setup times
 
 Written by Túlio Toffolo and Haroldo Santos.
 
-(C) Copyright 2015, by GOAL, UFOP and CODeS Research Group, KU Leuven. All rights reserved.
+(C) Copyright 2015 by GOAL, UFOP and CODeS Research Group, KU Leuven. All rights reserved.  
 More information: http://goal.ufop.br/upmsp
 
 Please address all contributions, suggestions, and inquiries to the current project administrator.
 
 ## Getting Started
 
-The package includes the solver source code for the unrelated parallel machine scheduling problem with sequence dependent setup times.
+This repository contains stochastic local search (SLS) methods to address the unrelated parallel machine scheduling problem (UPMSP) with sequence dependent setup times.
 
 The class with the main procedure is at upmsp.Main.
 Alternatively, you can download the latest binary (jar) file in the *bin* folder.
@@ -19,10 +19,10 @@ Alternatively, you can download the latest binary (jar) file in the *bin* folder
 Usage examples:
 
 - java -jar upmsp.jar instance.txt solution.txt
-- java -jar upmsp.jar instance.txt solution.txt -algorithm sa -alpha 0.98 -samax 1000 -t0 100000
-- java -jar upmsp.jar instance.txt solution.txt -algorithm ils -rnamax 10000000 -itersp 700 -p0 10 -pmax 5
-- java -jar upmsp.jar instance.txt solution.txt -algorithm lahc -listsize 100
-- java -jar upmsp.jar instance.txt solution.txt -algorithm schc -stepsize 100
+- java -jar upmsp.jar instance.txt solution.txt -algorithm sa -alpha 0.98 -saMax 1000 -t0 100000
+- java -jar upmsp.jar instance.txt solution.txt -algorithm ils -rnaMax 10000000 -itersP 700 -p0 10 -pMax 5
+- java -jar upmsp.jar instance.txt solution.txt -algorithm lahc -listSize 100
+- java -jar upmsp.jar instance.txt solution.txt -algorithm schc -stepSize 100
 
 ## Requirements
 
