@@ -26,7 +26,7 @@ Usage examples:
 
 ## Requirements
 
-Java 1.8 is required.
+Java 1.8 and [Apache Commons Math](https://commons.apache.org/proper/commons-math/ "Apache Commons Math") library are required.
 
 ## Questions?
 
