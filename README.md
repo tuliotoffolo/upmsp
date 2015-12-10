@@ -13,10 +13,16 @@ Please address all contributions, suggestions, and inquiries to the current proj
 
 This repository contains stochastic local search (SLS) methods to address the unrelated parallel machine scheduling problem (UPMSP) with sequence dependent setup times.
 
-The class with the main procedure is at upmsp.Main.
-Alternatively, you can download the latest binary (jar) file in the *bin* folder.
+### Compiling the code
 
-Usage examples:
+This project now uses [gradle](http://gradle.org "Gradle").
+It simplifies compiling the code with its dependencies. Just run:
+
+- gradle build
+
+The jar file (upmsp.jar) will be generated.
+
+### Usage examples:
 
 - java -jar upmsp.jar instance.txt solution.txt
 - java -jar upmsp.jar instance.txt solution.txt -algorithm sa -alpha 0.98 -saMax 1000 -t0 100000
@@ -24,16 +30,7 @@ Usage examples:
 - java -jar upmsp.jar instance.txt solution.txt -algorithm lahc -listSize 100
 - java -jar upmsp.jar instance.txt solution.txt -algorithm schc -stepSize 100
 
-## Compiling the code
-
-This project now uses [gradle](http://gradle.org "Gradle").
-It simplifies compiling the code with its dependencies. Just run:
-
-- gradle build
-
-In addition, the jar file (upmsp.jar) will be generated.
-
-## Requirements
+### Requirements
 
 Java 1.8 and [Apache Commons Math](https://commons.apache.org/proper/commons-math/ "Apache Commons Math") library are required.
 
