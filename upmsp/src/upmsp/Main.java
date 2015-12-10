@@ -7,6 +7,9 @@ import upmsp.model.*;
 import upmsp.model.solution.*;
 import upmsp.util.*;
 
+import java.io.*;
+import java.util.*;
+
 /**
  * This class is the Main class of the program, responsible of parsing the input, instantiating moves and heuristics and
  * printing the results.

@@ -5,6 +5,9 @@ import upmsp.model.*;
 import upmsp.model.solution.*;
 import upmsp.util.*;
 
+import java.io.*;
+import java.util.*;
+
 /**
  * This class is an Iterated Local Search implementation.
  *
