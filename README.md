@@ -26,7 +26,7 @@ Usage examples:
 
 ## Compiling the code
 
-This project now uses [gradle](http://gradle.org "Gradle).
+This project now uses [gradle](http://gradle.org "Gradle").
 It simplifies compiling the code with its dependencies. Just run:
 
 - gradle build
