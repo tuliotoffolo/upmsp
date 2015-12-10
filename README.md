@@ -24,6 +24,15 @@ Usage examples:
 - java -jar upmsp.jar instance.txt solution.txt -algorithm lahc -listSize 100
 - java -jar upmsp.jar instance.txt solution.txt -algorithm schc -stepSize 100
 
+## Compiling the code
+
+This project now uses [gradle](http://gradle.org "Gradle).
+It simplifies compiling the code with its dependencies. Just run:
+
+- gradle build
+
+In addition, the jar file (upmsp.jar) will be generated.
+
 ## Requirements
 
 Java 1.8 and [Apache Commons Math](https://commons.apache.org/proper/commons-math/ "Apache Commons Math") library are required.
