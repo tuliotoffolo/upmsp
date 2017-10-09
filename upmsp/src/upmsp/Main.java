@@ -66,7 +66,6 @@ public class Main {
      * @param args the input arguments
      * @throws IOException if any IO error occurs.
      */
-
     public static void main(String[] args) throws IOException {
         Locale.setDefault(new Locale("en-US"));
         readArgs(args);
