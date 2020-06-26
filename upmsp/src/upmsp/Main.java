@@ -22,13 +22,15 @@ public class Main {
 
     public static long startTimeMillis = System.currentTimeMillis();
 
+    public static boolean validate = false;
+
     public static String algorithm = "sa";
     public static String inFile;
     public static String outFile = null;
 
     public static long seed = 0;
     public static long maxIters = ( long ) 1e8;
-    public static long timeLimit = 70 * 1000;
+    public static long timeLimit = 60 * 1000;
 
     public static int bestKnown = Integer.MAX_VALUE;
 
@@ -72,6 +74,20 @@ public class Main {
 
         Problem problem = new Problem(inFile);
         Random random = new Random(seed);
+
+        // check if solver should be executed only as a validator
+        if (validate) {
+            Solution solution = new Solution(problem);
+            solution.read(outFile);
+            boolean validSolution = solution.validate(System.out);
+            if (validSolution) {
+                System.out.println("\nSolution was validated and has cost "+ solution.getCost() +"  :)\n");
+            }
+            else {
+                System.out.println("\nSolution is invalid!  :'(\n");
+            }
+            return;
+        }
 
         Heuristic solver;
         switch (algorithm) {
@@ -209,6 +225,7 @@ public class Main {
         System.out.println("    -seed <seed>           : random seed (default: " + seed + ").");
         System.out.println("    -maxIters <maxIters>   : maximum number of consecutive rejections (default: Long.MAXVALUE).");
         System.out.println("    -time <timeLimit>      : time limit in seconds (default: " + timeLimit + ").");
+        System.out.println("    -validate              : executes the solver as a validator (existing output file will be checked).");
         System.out.println();
         System.out.println("    ILS parameters:");
         System.out.println("        -rnamax <rnamax> : maximum rejected iterations in the descent phase of ILS (default: " + rnaMax + ").");
@@ -232,6 +249,7 @@ public class Main {
         System.out.println();
         System.out.println("Examples:");
         System.out.println("    java -jar upmsp.jar instance.txt solution.txt");
+        System.out.println("    java -jar upmsp.jar instance.txt solution.txt -validate");
         System.out.println("    java -jar upmsp.jar instance.txt solution.txt -algorithm sa -alpha 0.98 -samax 1000 -t0 100000");
         System.out.println();
     }
@@ -267,6 +285,9 @@ public class Main {
                     break;
                 case "-time":
                     timeLimit = Math.round(Double.parseDouble(args[++index]) * 1000.0);
+                    break;
+                case "-validate":
+                    validate = true;
                     break;
 
                 case "-bestknown":

@@ -1,5 +1,6 @@
 package upmsp.model.solution;
 
+import jdk.nashorn.internal.*;
 import upmsp.model.*;
 import upmsp.util.*;
 
@@ -82,6 +83,54 @@ public class Solution {
      */
     public int getNMachines() {
         return nMachines;
+    }
+
+    /**
+     * Reads a solution from a file.
+     *
+     * @param filePath the input file path.
+     * @throws IOException in case any IO error occurs.
+     */
+    public void read(String filePath) throws IOException {
+        // resetting solution
+        for (int m = 0; m < problem.nMachines; m++) {
+            machines[m] = new Machine(this, m);
+        }
+
+        nMachines = 0;
+        makespan = 0;
+        makespanMachine = machines[0];
+
+        BufferedReader reader = Files.newBufferedReader(Paths.get(filePath));
+        SimpleTokenizer token;
+
+        // skip first line
+        reader.readLine();
+
+        for (Machine machine : machines) {
+            token = new SimpleTokenizer(reader.readLine());
+            int nJobs = token.nextInt();
+            for (int i = 0; i < nJobs; i++) {
+                machine.addJob(token.nextInt());
+            }
+        }
+
+        updateCost();
+
+        // double-checking that cost in solution matches computed cost
+        if (AssertsEnabled.assertsEnabled()) {
+            assert (validate(null));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains("Total makespan")) {
+                    String[] data = line.split(" ");
+                    assert (getCost() == Integer.parseInt(data[data.length - 1]));
+                    break;
+                }
+            }
+        }
+
+        reader.close();
     }
 
     /**
