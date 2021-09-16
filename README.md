@@ -4,7 +4,7 @@
 
 Written by Túlio Toffolo and Haroldo Santos.
 
-(C) Copyright 2015 by GOAL, UFOP and CODeS Research Group, KU Leuven. All rights reserved.  
+(C) Copyright 2015 by GOAL (UFOP) and CODeS Research Group (KU Leuven). All rights reserved.  
 More information: http://goal.ufop.br/upmsp
 
 Please address all contributions, suggestions, and inquiries to the current project administrator.
