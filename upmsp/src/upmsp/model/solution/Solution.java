@@ -1,6 +1,5 @@
 package upmsp.model.solution;
 
-import jdk.nashorn.internal.*;
 import upmsp.model.*;
 import upmsp.util.*;
 
@@ -22,6 +21,8 @@ public class Solution {
     protected int makespan;
     public Machine makespanMachine;
 
+    private boolean assertOn = false;
+
     /**
      * Instantiates a new Solution.
      *
@@ -38,6 +39,9 @@ public class Solution {
         nMachines = 0;
         makespan = 0;
         makespanMachine = machines[0];
+
+        // *assigns* true if assertions are on.
+        assert assertOn = true;
     }
 
     /**
@@ -56,6 +60,8 @@ public class Solution {
         nMachines = solution.nMachines;
         makespan = solution.makespan;
         makespanMachine = machines[solution.makespanMachine.id];
+
+        assertOn = solution.assertOn;
     }
 
     /**
@@ -118,7 +124,7 @@ public class Solution {
         updateCost();
 
         // double-checking that cost in solution matches computed cost
-        if (AssertsEnabled.assertsEnabled()) {
+        if (assertOn) {
             assert (validate(null));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -160,14 +166,14 @@ public class Solution {
         boolean valid = true;
 
         // checking jobs allocations
-        boolean allocs[] = new boolean[problem.nJobs];
+        boolean[] allocs = new boolean[problem.nJobs];
         for (Machine machine : machines) {
             for (int idx = 0; idx < machine.getNJobs(); idx++) {
                 if (allocs[machine.jobs[idx]]) {
                     valid = false;
                     Util.safePrintf(output, "Job %d is allocated twice\n", machine.jobs[idx]);
                 }
-                allocs[machine.jobs[idx]] |= true;
+                allocs[machine.jobs[idx]] = true;
             }
         }
 

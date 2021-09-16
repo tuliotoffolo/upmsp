@@ -70,7 +70,8 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
         Locale.setDefault(new Locale("en-US"));
-        readArgs(args);
+        if (!readArgs(args))
+            return;
 
         Problem problem = new Problem(inFile);
         Random random = new Random(seed);
@@ -259,10 +260,10 @@ public class Main {
      *
      * @param args the input arguments
      */
-    public static void readArgs(String args[]) {
+    public static boolean readArgs(String args[]) {
         if (args.length < 2) {
             printUsage();
-            System.exit(-1);
+            return false;
         }
 
         int index = -1;
@@ -338,8 +339,10 @@ public class Main {
 
                 default:
                     printUsage();
-                    System.exit(-1);
+                    return false;
             }
         }
+
+        return true;
     }
 }
