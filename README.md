@@ -20,7 +20,7 @@ It simplifies compiling the code with its dependencies. Just run:
 
 - gradle build
 
-The jar file (``upmsp.jar``) will be generated.
+The jar file ``upmsp.jar`` will be generated.
 
 ### Usage examples:
 
